@@ -12,7 +12,7 @@ describe('My Object Test Suites', function() {
         it('proves that one is smaller than two', function() {
             expect(1).toBeLessThan(2);
         });
-        
+
         it('proves myObject is an object', function() {
             expect(typeof myObject).toBe('object');
         });
