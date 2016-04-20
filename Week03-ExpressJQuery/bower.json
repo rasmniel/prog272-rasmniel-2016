@@ -1,0 +1,17 @@
+{
+  "name": "Week03-ExpressJQuery",
+  "description": "JQuery assignment",
+  "main": "bin/www",
+  "license": "MIT",
+  "homepage": "https://github.com/rasmniel/prog272-rasmniel-2016",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}

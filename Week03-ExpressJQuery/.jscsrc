@@ -1,0 +1,7 @@
+{
+  "preset": "google",
+  "validateIndentation": 4,
+  "excludeFiles": ["**/node_modules/**", "**/components/**", "**/bower-components/**", "**/platforms/**", "**/plugins/**", "**/hooks/**"],
+  "requireCamelCaseOrUpperCaseIdentifiers": false,
+  "maximumLineLength": 120
+}
