@@ -37,7 +37,14 @@ module.exports = function(grunt) {
         },
 
         jsbeautifier: {
-            files: ['**/*.js', '!**/node_modules/**', '!**/components/**'],
+            files: ['**/*.js',
+                '!**/node_modules/**',
+                '!**/components/**',
+                '!**/bower-components/**',
+                '!**/platforms/**',
+                '!**/plugins/**',
+                '!**/hooks/**'
+            ],
             options: {
                 'indentSize': 4
             }
