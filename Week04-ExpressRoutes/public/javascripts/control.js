@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log('Document loaded!');
 
     $('#read').click(function() {
-        console.log('Read called!');
+        console.log('Read function called!');
         $.getJSON('/read', function(result) {
             console.log(result);
             $('#display').html(result.name);
@@ -11,13 +11,28 @@ $(document).ready(function() {
     });
 
     $('#readJSON').click(function() {
-        console.log("ReadJSON called!");
+        console.log("ReadJSON function called!");
         $.getJSON('names.json', function(result) {
-            console.log(result);
             $('#displayJSON').html(JSON.stringify(result));
             var nameString = getNameString(result);
             console.log(nameString);
             $('#display').html(nameString);
+        });
+    });
+
+    $('#add').click(function() {
+        console.log('Add function called!')
+        var valueA = $('#operandA').val();
+        var valueB = $('#operandB').val();
+        console.log("Operands: " + valueA + ' ' + valueB);
+        var query = {
+            operandA: valueA,
+            operandB: valueB
+        };
+        $.getJSON('/add', query, function(result) {
+            console.log(result);
+            $('#display').html(result.sum)
+            $('#displayJSON').html(JSON.stringify(result));
         });
     });
 });
@@ -28,7 +43,6 @@ function getNameString(result) {
     for (var i = 0; i < result.length; i++) {
         nameString += ' ';
         var name = JSON.stringify(result[i].name);
-        console.log(name);
         nameString += name + ',';
     }
     nameString = nameString.substr(0, nameString.length - 1);
