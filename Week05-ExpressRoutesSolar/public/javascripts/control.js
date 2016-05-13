@@ -1,7 +1,7 @@
 $(document).ready(function() {
     'use strict';
     $.getJSON('/renewables', function(response) {
-            console.log(response);
+            // console.log(response);
             $('#debug').html(JSON.stringify(response))
         })
         .done(function() {
