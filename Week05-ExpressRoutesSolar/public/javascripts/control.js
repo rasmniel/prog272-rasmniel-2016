@@ -1,7 +1,7 @@
 $(document).ready(function() {
     'use strict';
     $.getJSON('/renewables', function(response) {
-            console.log(response);
+            // console.log(response);
             $('#debug').html(JSON.stringify(response))
         })
         .done(function() {
@@ -19,5 +19,21 @@ $(document).ready(function() {
     $('#getRenewables').click(function() {
         console.log("Renewables button pressed!");
         window.location.href = '/renewables';
+    });
+
+    $('#getByYear').click(function() {
+        var year = $('#getByInput').val();
+        $.getJSON('/renewableByYear/' + year, function(response) {
+            // console.log(response);
+            $('#debug').html(JSON.stringify(response));
+        });
+    });
+
+    $('#getByIndex').click(function() {
+        var index = $('#getByInput').val();
+        $.getJSON('/renewableByIndex/' + index, function(response) {
+            // console.log(response);
+            $('#debug').html(JSON.stringify(response));
+        });
     });
 });
