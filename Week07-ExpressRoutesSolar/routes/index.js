@@ -31,7 +31,7 @@ router.get('/renewableByIndex/:id', function(request, response) {
         // console.log(json[id]);
         response.send({
             result: 'Success',
-            renewables: json[id]
+            renewable: json[id]
         });
     });
 });
@@ -57,7 +57,7 @@ router.get('/renewableByYear/:year', function(request, response) {
         var json = JSON.parse(data);
         for (var entry in json) {
             var current = json[entry];
-            console.log('Year: ' + current['Year'])
+            // console.log('Year: ' + current['Year']);
             if (current['Year'] == year) {
                 response.send({
                     result: 'Success',
@@ -68,7 +68,7 @@ router.get('/renewableByYear/:year', function(request, response) {
         }
         response.send({
             result: 'Not found'
-            // renewable: null - this line fails the test...
+            // , renewable: null // this line fails the test...
         });
     });
 });

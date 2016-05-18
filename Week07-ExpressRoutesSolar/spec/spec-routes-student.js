@@ -1,7 +1,7 @@
 var request = require('supertest');
 var app = require('../app');
 
-fdescribe("Spec Routes Student Suite", function() {
+describe("Spec Routes Student Suite", function() {
     'use strict';
 
     it('shows we can run tests', function() {

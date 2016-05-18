@@ -19,6 +19,19 @@ describe('Jasmine tests', function() {
             });
     });
 
+    it('shows we can call renewables route without error and get a 200 back', function(done) {
+        request(app)
+            .get('/renewables')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end(function(err, res) {
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
+    });
+
     it('renewables first object body', function(done) {
         request(app)
             .get('/renewables')
