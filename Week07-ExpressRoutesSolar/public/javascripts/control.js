@@ -1,53 +1,26 @@
-$(document).ready(function() {
-    'use strict';
-    $.getJSON('/renewables', function(response) {
-            // console.log(response);
-            $('#debug').html(JSON.stringify(response, null, 4))
-        })
-        .done(function() {
-            console.log("second success");
-        })
-        .fail(function(a, b, c) {
-            console.log('Error', a, b, c);
-            $('#debug').html('Error occured: ', a.status);
-        })
-        .always(function() {
-            console.log("complete");
-        });
+define(['jquery', 'work', 'about', 'renewables', 'renewableByYear', 'renewableByIndex'],
+    function($, work, about, renewables, renewableByYear, renewableByIndex) {
+        //Do setup work here
 
-    // Get raw renewables objects by clicking button.
-    $('#toRenewables').click(function() {
-        console.log("Renewables button pressed!");
-        window.location.href = '/renewables';
-    });
+        function showBar() {
+            //console.log('Show Bar Clicks called now');
+            $('#display2').html('bar');
+        }
 
-    $('#getRenewables').click(function() {
-        $.getJSON('/renewables', function(response) {
-            $('#displayRenewables').html(JSON.stringify(response, null, 4));
-        });
+        var control = {
+            color: "black",
+            size: "unisize",
+            setup: function() {
+                $(document).on('click', '#showClick', showBar);
+                $('#display2').html(control.color + ' - ' + control.size);
+            },
+            init: function() {
+                $('#workButton').click(work.init);
+                $('#renewableButton').click(renewables.init);
+                $('#byYearButton').click(renewableByYear.init);
+                $('#byIndexButton').click(renewableByIndex.init);
+                $('#aboutButton').click(about.init);
+            }
+        };
+        return control;
     });
-
-    $('#getByYear').click(function() {
-        var year = $('#inputYear').val();
-        $.getJSON('/renewableByYear/' + year, function(response) {
-            // console.log(response);
-            $('#displayByYear').html(JSON.stringify(response, null, 4));
-        });
-    });
-
-    $('#getByIndex').click(function() {
-        var index = $('#inputIndex').val();
-        $.getJSON('/renewableByIndex/' + index, function(response) {
-            // console.log(response);
-            $('#displayByIndex').html(JSON.stringify(response, null, 4));
-        });
-    });
-    
-    $('#clear').click(function() {
-        $('#displayRenewables').html('');
-        $('#displayByYear').html('');
-        $('#displayByIndex').html('');
-        $('#inputYear').val('');
-        $('#inputIndex').val('');
-    });
-});

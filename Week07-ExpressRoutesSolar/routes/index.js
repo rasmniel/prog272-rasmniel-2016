@@ -6,7 +6,7 @@ var energyUtils = require('../routes/energy-utils');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', {
-        title: 'Week05-ExpressRoutesSolar-Nielsen'
+        title: 'ExpressRoutesSolar-Nielsen'
     });
 });
 
@@ -68,8 +68,13 @@ router.get('/renewableByYear/:year', function(request, response) {
         }
         response.send({
             result: 'Not found'
-            // , renewable: null // this line fails the test...
         });
+    });
+});
+
+router.get('/:id', function(request, response) {
+    response.render(request.params.id, {
+        title: 'ElfComponent'
     });
 });
 

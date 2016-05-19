@@ -74,7 +74,7 @@ describe('Jasmine tests', function() {
             .expect(function(response) {
                 expect(response.body.result).toBe('Success');
                 // console.log(response.body.renewables);
-                expect(response.body.renewables.Year).toBe('2016');
+                expect(response.body.renewable.Year).toBe('2016');
             })
             .end(function(err, res) {
                 if (err) {

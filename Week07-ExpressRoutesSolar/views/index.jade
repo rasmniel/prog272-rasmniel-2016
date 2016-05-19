@@ -1,29 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  
-  div
-    button#clear Clear Output
-  hr
-  
-  div
-    button#getRenewables Get All Renewables
-    pre#displayRenewables
-  hr
-  
-  div
-    input#inputYear(type='number', value = 2006)
-    button#getByYear Renewable By Year
-    pre#displayByYear
-  hr
-  
-  div
-    input#inputIndex(type='number', value = 0)
-    button#getByIndex Renewable By Index
-    pre#displayByIndex
-  hr
-  
-  div
-    button#toRenewables To Raw Renewable Data
+    h1= title
+    p Welcome to #{title}
+    
+    button#workButton.btn.btn-primary Work
+    button#renewableButton.btn.btn-success Renewables
+    button#byYearButton.btn.btn-success By Year
+    button#byIndexButton.btn.btn-success By Index
+    button#aboutButton.btn.btn-secondary About
+    
+    div#elf-view
