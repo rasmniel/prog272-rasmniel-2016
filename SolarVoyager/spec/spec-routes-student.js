@@ -1,7 +1,7 @@
 var request = require('supertest');
 var app = require('../app');
 
-describe("Spec Routes Student Suite", function() {
+describe('Spec Routes Student Suite', function() {
     'use strict';
 
     it('shows we can run tests', function() {
@@ -23,7 +23,7 @@ describe("Spec Routes Student Suite", function() {
             });
     });
 
-    it('call renewables route, parse text property of response object and show first object contains 2017', function(done) {
+    it('call renewables route and show first object contains 2017', function(done) {
         request(app)
             .get('/renewables')
             .expect(200)

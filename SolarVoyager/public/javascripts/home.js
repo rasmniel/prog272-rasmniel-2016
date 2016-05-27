@@ -1,7 +1,8 @@
 define(function() {
+    'use strict';
     var home = {
-        color: "Red",
-        size: "Big",
+        color: 'Red',
+        size: 'Big',
         init: function() {
             console.log(home.color);
             $('#elf-view').load('/home', function() {
@@ -10,7 +11,7 @@ define(function() {
             });
         },
         toRenewables: function() {
-            console.log("Renewables button pressed!");
+            console.log('Renewables button pressed!');
             window.location.href = '/renewables';
         }
     };

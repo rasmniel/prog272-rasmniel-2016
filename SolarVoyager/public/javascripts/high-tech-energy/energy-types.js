@@ -1,4 +1,5 @@
 define(function() {
+    'use strict';
     var energyTypes = {
         color: 'Brown',
         size: 'Huge',
@@ -15,14 +16,14 @@ define(function() {
                     $('#debug').html(JSON.stringify(response, null, 4));
                 })
                 .done(function() {
-                    console.log("second success");
+                    console.log('second success');
                 })
                 .fail(function(a, b, c) {
                     console.log('Error', a, b, c);
                     $('#debug').html('Error occured: ', a.status);
                 })
                 .always(function() {
-                    console.log("complete");
+                    console.log('complete');
                 });
         }
     };

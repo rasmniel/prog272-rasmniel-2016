@@ -22,6 +22,8 @@ block content
                         ul.dropdown-menu(role='menu')
                             li.trigger-collapse(ng-class="{ active: isActive('/renewables')}")
                                 a.renewablesMenu Renewables
+                                a.renewablesByIndexMenu By Index
+                                a.renewablesByYearMenu By Year
                                 
                     li.collapse.dropdown
                         a.dropdown-toggle(data-toggle='dropdown')
@@ -30,6 +32,7 @@ block content
                         ul.dropdown-menu(role='menu')
                             li.trigger-collapse(ng-class="{ active: isActive('/high-tech-energy')}")
                                 a.highTechEnergyOverviewMenu High Tech Energy
+                                a.highTechEnergyTypesMenu Energy Types
                                 
                     li.trigger-collapse(ng-class="{ active: isActive('/about')}")
                         a.aboutMenu About
@@ -47,7 +50,6 @@ block content
         div
             button.highTechEnergyOverviewMenu.btn.btn-info High Tech Energy Overview
             button.highTechEnergyTypesMenu.btn.btn-danger High Tech Energy Types
-
 
     #elf-view
 

@@ -106,6 +106,6 @@ var renewables = [{
     "Liquid biofuels (quadrillion Btu)": "0.41156380775",
     "Wood biomass (quadrillion Btu)": "2.099319235",
     "Hydropower (quadrillion Btu)": "2.869035197"
-}]
+}];
 
 module.exports = renewables;

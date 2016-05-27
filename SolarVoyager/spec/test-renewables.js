@@ -15,7 +15,9 @@ define(['jquery', 'renewables', 'clientRenewables'], function($, renewables, cli
             expect(renewables.init).toBeDefined();
         });
 
-        fit('expects getRenewable to be defined', function() {
+        // This is not what the test actually does.
+        // It checks whether the getRenewable method fills up the renewablesList array...
+        it('expects getRenewable to be defined', function() {
             spyOn($, 'getJSON').and.callFake(function(url, success) {
                 success({
                     renewables: clientRenewables
@@ -33,8 +35,8 @@ define(['jquery', 'renewables', 'clientRenewables'], function($, renewables, cli
                 };
             });
             renewables.getRenewable();
-            console.log(Object.keys(renewables));
-            console.log('renewableslist', renewables.renewablesList);
+            console.log('Keys: ' + Object.keys(renewables));
+            console.log('renewableslist ' + renewables.renewablesList);
             expect(renewables.renewablesList[0].Year).toBe('2017');
         });
 

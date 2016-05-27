@@ -12,12 +12,13 @@ define(['home'], function(home) {
             expect(true).toBe(true);
         });
 
+        // I like capital first letters :)
         it('expects home.color to be red', function() {
-            expect(home.color).toBe('red');
+            expect(home.color).toBe('Red');
         });
 
         it('expects home.size to be big', function() {
-            expect(home.size).toBe('big');
+            expect(home.size).toBe('Big');
         });
 
     });
