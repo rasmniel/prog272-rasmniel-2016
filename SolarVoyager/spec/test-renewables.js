@@ -35,8 +35,8 @@ define(['jquery', 'renewables', 'clientRenewables'], function($, renewables, cli
                 };
             });
             renewables.getRenewable();
-            console.log('Keys: ' + Object.keys(renewables));
-            console.log('renewableslist ' + renewables.renewablesList);
+            // console.log('Keys: ' + Object.keys(renewables));
+            // console.log('renewableslist ' + renewables.renewablesList);
             expect(renewables.renewablesList[0].Year).toBe('2017');
         });
 

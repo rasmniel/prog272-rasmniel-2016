@@ -20,7 +20,6 @@ define(function() {
                     renewables.index = $('#indexInput').val();
                 }
                 renewables.renewablesList = response.renewables;
-                console.log(renewables.index);
                 renewables.showRenewable(renewables.renewablesList[renewables.index]);
                 $('#debug').html(JSON.stringify(response, null, 4));
                 // For some inexplicable reason, these calls fails the tests despite not being relevant for it...
