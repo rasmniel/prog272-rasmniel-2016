@@ -9,4 +9,5 @@ function objectToArray(obj) {
     });
     return objAsArray;
 }
+
 module.exports.objectToArray = objectToArray;

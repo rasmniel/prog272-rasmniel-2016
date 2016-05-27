@@ -79,6 +79,48 @@ router.get('/renewableByYear/:year', function(request, response) {
     });
 });
 
+router.get('/high-tech-energy/:id', function(request, response) {
+    console.log('high tech energy page called');
+    response.render('high-tech-energy/' + request.params.id, {
+        title: 'ElfComponent'
+    });
+});
+
+router.get('/highTechEnergy', function(request, response) {
+    // console.log('Renewables called!');
+    fs.readFile('data/HighTechEnergy.json', 'utf8', function(err, data) {
+        if (err) throw err;
+        var json = JSON.parse(data);
+        // console.log(data);
+        response.send({
+            result: 'Success',
+            renewables: json
+        });
+    });
+});
+
+router.get('/highTechEnergyTypes', function(request, response) {
+    // console.log('Renewables called!');
+    fs.readFile('data/HighTechEnergy.json', 'utf8', function(err, data) {
+        if (err) throw err;
+        var json = JSON.parse(data);
+        var jsonTypes = [];
+        for (var i = 0; i < json.length; i++) {
+            // console.log(json);
+            jsonTypes.push({
+                'MSN': json[i]['MSN'],
+                'Description': json[i]['Description']
+            });
+        }
+        // console.log(data);
+        response.send({
+            result: 'Success',
+            renewables: jsonTypes
+        });
+    });
+});
+
+
 router.get('/:id', function(request, response) {
     response.render(request.params.id, {
         title: 'ElfComponent'

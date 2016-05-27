@@ -1,5 +1,5 @@
-define(['jquery', 'home', 'about', 'renewables', 'renewableByYear', 'renewableByIndex'],
-    function($, home, about, renewables, renewableByYear, renewableByIndex) {
+define(['jquery', 'home', 'about', 'renewables', 'renewableByYear', 'renewableByIndex', 'energyOverview', 'energyTypes'],
+    function($, home, about, renewables, renewableByYear, renewableByIndex, energyOverview, energyTypes) {
         //Do setup work here
 
         function showBar() {
@@ -15,11 +15,15 @@ define(['jquery', 'home', 'about', 'renewables', 'renewableByYear', 'renewableBy
                 $('#display2').html(control.color + ' - ' + control.size);
             },
             init: function() {
-                $('#homeButton').click(home.init);
-                $('#renewableButton').click(renewables.init);
-                $('#byYearButton').click(renewableByYear.init);
-                $('#byIndexButton').click(renewableByIndex.init);
-                $('#aboutButton').click(about.init);
+                $('.homeMenu').click(home.init);
+                $('.renewablesMenu').click(renewables.init);
+                $('.renewablesByIndexMenu').click(renewableByIndex.init);
+                $('.renewablesByYearMenu').click(renewableByYear.init);
+                $('.aboutMenu').click(about.init);
+                
+                $('.highTechEnergyOverviewMenu').click(energyOverview.init);
+                $('.highTechEnergyTypesMenu').click(energyTypes.init);
+                
                 home.init();
             }
         };

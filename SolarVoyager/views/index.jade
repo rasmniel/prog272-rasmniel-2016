@@ -1,13 +1,58 @@
 extends layout
 
 block content
-    h1= title
-    p Welcome to #{title}
-    
-    button#homeButton.btn.btn-primary Home
-    button#renewableButton.btn.btn-success Renewables
-    button#byYearButton.btn.btn-success By Year
-    button#byIndexButton.btn.btn-success By Index
-    button#aboutButton.btn.btn-secondary About
-    
-    div#elf-view
+    header.navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav(role='banner')
+        .container
+            .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='/') Solar Explorer
+            nav.collapse.navbar-collapse.bs-navbar-collapse(role="navigation")
+                ul.nav.navbar-nav
+                    li.trigger-collapse(ng-class="{ active: isActive('/')}")
+                        a.homeMenu Home
+                        
+                    li.collapse.dropdown
+                        a.dropdown-toggle(data-toggle='dropdown')
+                            | Renewables
+                            b.caret
+                        ul.dropdown-menu(role='menu')
+                            li.trigger-collapse(ng-class="{ active: isActive('/renewables')}")
+                                a.renewablesMenu Renewables
+                                
+                    li.collapse.dropdown
+                        a.dropdown-toggle(data-toggle='dropdown')
+                            | Energy
+                            b.caret
+                        ul.dropdown-menu(role='menu')
+                            li.trigger-collapse(ng-class="{ active: isActive('/energyTypes')}")
+                                a.highTechEnergyOverviewMenu High Tech Energy
+                                
+                        ul.dropdown-menu(role='menu')
+                        
+                                                        // BASED ON THE DROP DOWN SHOWN ABOVE
+                                                        // YOU DEFINE EnerygyOverview and EnergyTypes
+                    li.trigger-collapse(ng-class="{ active: isActive('/about')}")
+                        a.aboutMenu About
+    .container
+
+        h1= title
+        p Welcome to #{title}
+
+        button.homeMenu.btn.btn-primary Home
+        button.renewablesMenu.btn.btn-info Renewables
+        button.renewablesByIndexMenu.btn.btn-danger Renewables by Index
+        button.renewablesByYearMenu.btn.btn-warning Renewables by Year
+        button.aboutMenu.btn.btn-success About
+
+        div
+            button.highTechEnergyOverviewMenu.btn.btn-info High Tech Energy Overview
+            button.highTechEnergyTypesMenu.btn.btn-danger High Tech Energy Types
+
+
+    #elf-view
+
+  pre#debug
