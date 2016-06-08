@@ -11,7 +11,7 @@ define(function() {
             });
         },
         getHighTechEnergyTypes: function() {
-            $.getJSON('/highTechEnergyTypes/', function(response) {
+            $.getJSON('/high-tech-energy/types/', function(response) {
                     // console.log(response);
                     $('#debug').html(JSON.stringify(response, null, 4));
                 })

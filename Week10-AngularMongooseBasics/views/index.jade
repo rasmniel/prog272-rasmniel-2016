@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+
+  div(ng-controller="MongoController")
+    button(ng-click="insertValidData()") Insert Valid Data
+    button(ng-click="getAll()") Get All
+    button(ng-click="emptyCollection()") EmptyCollection
+
+    div
+      pre {{allData}}
+
+    p {{display}}

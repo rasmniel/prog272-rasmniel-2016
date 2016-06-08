@@ -12,7 +12,7 @@ define(function() {
         },
         getByIndex: function() {
             var index = $('#inputIndex').val();
-            $.getJSON('/renewableByIndex/' + index, function(response) {
+            $.getJSON('renewables/byIndex/' + index, function(response) {
                     // console.log(response);
                     $('#displayByIndex').html(JSON.stringify(response, null, 4));
                 })

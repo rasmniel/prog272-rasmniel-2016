@@ -12,7 +12,7 @@ define(function() {
         },
         getByYear: function() {
             var year = $('#inputYear').val();
-            $.getJSON('/renewableByYear/' + year, function(response) {
+            $.getJSON('/renewables/byYear/' + year, function(response) {
                     // console.log(response);
                     $('#displayByYear').html(JSON.stringify(response, null, 4));
                 })

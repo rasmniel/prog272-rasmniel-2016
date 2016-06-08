@@ -11,7 +11,7 @@ define(function() {
             });
         },
         getHighTechEnergy: function() {
-            $.getJSON('/highTechEnergy/', function(response) {
+            $.getJSON('/high-tech-energy/', function(response) {
                     // console.log(response);
                     $('#debug').html(JSON.stringify(response, null, 4));
                 })
