@@ -2,7 +2,7 @@ define(function() {
     'use strict';
 
     function getSettings() {
-        $.getJSON('/databaseSettings/getSettings', function(response) {
+        $.getJSON('/database-settings/getSettings', function(response) {
             $('#debug').html(JSON.stringify(response, null, 4));
             $('#dataType').val(response.settings.dataType);
             $('#dataSource').val(response.settings.dataSource);
@@ -38,7 +38,7 @@ define(function() {
                         dataSource: $('#dataSource').val(),
                         comment: $('#comment').val()
                     };
-                    $.post('/databaseSettings/updateSettings', userData, function(result) {
+                    $.post('/database-settings/updateSettings', userData, function(result) {
                         console.log(settings);
                     });
                 });

@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/databaseSettings', databaseSettings);
+app.use('/database-settings', databaseSettings);
 app.use('/renewables', renewables);
 app.use('/high-tech-energy', highTechEnergy);
 app.use('/', routes);
