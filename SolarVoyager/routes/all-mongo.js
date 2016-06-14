@@ -1,7 +1,7 @@
 var express = require('express');
 //var router = express.Router();
 var connect = require('./connect');
-var scientists = require('../models/scientists');
+var Scientists = require('../models/scientists');
 var fs = require('fs');
 
 var allData;
@@ -11,16 +11,18 @@ var totalScientistsSaved = 0;
 function allMongo() {
 
 }
+
 function insertScientist(scientist, response) {
+    'use strict';
     if (!connect.connected) {
         connect.doConnection();
     }
-    var newScientist = new scientists({
-        "firstName": scientist.firstName,
-        "lastName": scientist.lastName,
-        "subject": scientist.subject,
-        "subjects": scientist.subjects,
-        "comments": scientist.comments
+    var newScientist = new Scientists({
+        'firstName': scientist.firstName,
+        'lastName': scientist.lastName,
+        'subject': scientist.subject,
+        'subjects': scientist.subjects,
+        'comments': scientist.comments
     });
 
     console.log('inserting', newScientist.lastName);
@@ -30,20 +32,24 @@ function insertScientist(scientist, response) {
         totalScientistsSaved++;
         if (totalScientistsSaved === numberOfScientists) {
             //mongoose.disconnect();
-            response.send({result: 'Success'});
+            response.send({
+                result: 'Success'
+            });
         }
     });
 }
 
-allMongo.writeData = function(fileName, data) {
-    var data = JSON.stringify(data, null, 4);
+allMongo.writeData = function(fileName, json) {
+    'use strict';
+    var data = JSON.stringify(json, null, 4);
     fs.writeFile(fileName, data, function(err, data) {
-        if (err) throw(err);
+        if (err) throw (err);
         console.log('success writing file');
     });
-}
+};
 
 allMongo.readDataAndInsert = function(response) {
+    'use strict';
     fs.readFile('ValidScientists.json', function(err, scientists) {
         if (err) throw (err);
         numberOfScientists = scientists.length;
@@ -52,6 +58,6 @@ allMongo.readDataAndInsert = function(response) {
             insertScientist(scientists[i], response);
         }
     });
-}
+};
 
 module.exports = allMongo;

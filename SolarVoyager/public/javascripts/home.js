@@ -45,7 +45,7 @@ define(function() {
                 $('#display').html(home.color);
                 $('#display2').html(home.size);
                 getSettings();
-                $("#target").submit(function(event) {
+                $('#target').submit(function(event) {
                     event.preventDefault();
                     var userFormData = $(this).serialize();
                     $('#debug').html(userFormData);
@@ -58,7 +58,7 @@ define(function() {
                         console.log(settings);
                     });
                 });
-                $("#dataType").change(setSettings)
+                $('#dataType').change(setSettings);
                 $('#buttonExecute').click(execute);
                 $('#buttonInsert').click(insertJSON);
                 $('#buttonClear').click(clear);
@@ -80,8 +80,7 @@ define(function() {
             }).always(function() {
                 console.log('complete');
             });
-        }
-        else if (settings.dataType === 'Database') {
+        } else if (settings.dataType === 'Database') {
             loadData();
         }
     };
@@ -106,13 +105,17 @@ define(function() {
 
     var insertJSON = function() {
         for (var i = 0; i < list.length; i++) {
-            $.post('/renewables/addJSON', list[i], function(result) {
-                $('#debug').html(JSON.stringify(result, null, 4));
-            }, 'json').fail(function(a, b, c) {
-                console.log('Error', a, b, c);
-                $('#debug').html('Error occured: ', a.status);
-            });
+            postRenewable(list[i]);
         }
+    };
+
+    var postRenewable = function(renewable) {
+        $.post('/renewables/addJSON', renewable, function(result) {
+            $('#debug').html(JSON.stringify(result, null, 4));
+        }, 'json').fail(function(a, b, c) {
+            console.log('Error', a, b, c);
+            $('#debug').html('Error occured: ', a.status);
+        });
     };
 
     var clear = function() {

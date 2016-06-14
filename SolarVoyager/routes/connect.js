@@ -5,6 +5,7 @@ var connect = {
     connected: false,
 
     simpleConnect: function() {
+        'use strict';
         var url = 'mongodb://127.0.0.1:27017/renew';
         mongoose.connect(url);
         connect.connected = true;
@@ -17,6 +18,7 @@ var connect = {
     },
 
     mlabConnect: function() {
+        'use strict';
         connect.connected = true;
         var userName = 'rasmniel';
         var password = '1337haxxor';
@@ -34,11 +36,11 @@ var connect = {
     },
 
     doConnection: function(useSimple) {
+        'use strict';
         //var connectType = useSimple || true;
         if (false) {
             connect.simpleConnect();
-        }
-        else {
+        } else {
             connect.mlabConnect();
         }
     }

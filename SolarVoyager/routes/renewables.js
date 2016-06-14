@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var energyUtils = require('../routes/energy-utils');
-var renewables = require('../models/renewables');
+var Renewables = require('../models/renewables');
 var connect = require('./connect.js');
 
 router.get('/', function(request, response) {
@@ -20,14 +20,13 @@ router.get('/', function(request, response) {
 });
 
 // Database methods
-
 router.get('/getData', function(request, response) {
     'use strict';
     if (!connect.connected) {
         var useSimple = request.query.databaseConnect;
         connect.doConnection(useSimple);
     }
-    renewables.find({}, function(err, docs) {
+    Renewables.find({}, function(err, docs) {
         if (err) {
             response.send({
                 result: 'error'
@@ -46,7 +45,7 @@ router.post('/addJSON', function(request, response) {
         connect.doConnection(request.body.useSimple);
     }
     var data = request.body;
-    var newRenewables = new renewables({
+    var newRenewables = new Renewables({
         Year: data.Year,
         Solar: data['Solar (quadrillion Btu)'],
         Geothermal: data['Geothermal (quadrillion Btu)'],
@@ -70,7 +69,7 @@ router.get('/clear/', function(request, response) {
     if (!connect.connected) {
         connect.doConnection(request.body.useSimple);
     }
-    renewables.remove({}, function(err, removeResponse) {
+    Renewables.remove({}, function(err, removeResponse) {
         console.log('collection removed');
         response.send({
             result: 'success: ' + removeResponse.result.n + ' items removed!'
@@ -79,7 +78,6 @@ router.get('/clear/', function(request, response) {
 });
 
 // JSON methods
-
 router.get('/byIndex/:id', function(request, response) {
     'use strict';
     fs.readFile('data/Renewable.json', 'utf8', function(err, data) {
@@ -139,6 +137,5 @@ router.get('/:id', function(request, response) {
         title: 'ElfComponent'
     });
 });
-
 
 module.exports = router;

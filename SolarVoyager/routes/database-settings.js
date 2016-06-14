@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var settings = require('../models/settings');
+var Settings = require('../models/settings');
 var connect = require('./connect.js');
 
 /* GET users listing. */
@@ -10,13 +10,14 @@ router.get('/', function(req, res, next) {
 });
 
 function saveSettings(request, response) {
+    'use strict';
     console.log('request body', request.body);
 
-    var newSettings = new settings({
-        "keyNote": 'settings',
-        "dataSource": request.body.dataSource,
-        "dataType": request.body.dataType,
-        "comment": request.body.comment
+    var newSettings = new Settings({
+        'keyNote': 'settings',
+        'dataSource': request.body.dataSource,
+        'dataType': request.body.dataType,
+        'comment': request.body.comment
     });
 
     console.log('inserting', newSettings.comment);
@@ -32,12 +33,13 @@ function saveSettings(request, response) {
 }
 
 router.post('/updateSettings', function(request, response) {
+    'use strict';
     console.log('request body', request.body);
     if (!connect.connected) {
         connect.doConnection();
     }
 
-    settings.findOne({
+    Settings.findOne({
         keyNote: 'settings'
     }, function(err, doc) {
         console.log('findone', err, doc);
@@ -45,12 +47,10 @@ router.post('/updateSettings', function(request, response) {
             response.send({
                 result: 'error'
             });
-        }
-        else {
+        } else {
             if (doc === null) {
                 saveSettings(request, response);
-            }
-            else {
+            } else {
                 doc.dataType = request.body.dataType;
                 doc.dataSource = request.body.dataSource;
                 doc.comment = request.body.comment;
@@ -61,12 +61,13 @@ router.post('/updateSettings', function(request, response) {
 });
 
 router.get('/getSettings', function(request, response) {
+    'use strict';
     console.log('request body', request.body);
     if (!connect.connected) {
         connect.doConnection();
     }
 
-    settings.findOne({
+    Settings.findOne({
         keyNote: 'settings'
     }, function(err, doc) {
         console.log('findone', err, doc);
@@ -74,8 +75,7 @@ router.get('/getSettings', function(request, response) {
             response.send({
                 result: 'error'
             });
-        }
-        else {
+        } else {
             if (doc === null) {
                 response.send({
                     settings: {
@@ -83,9 +83,8 @@ router.get('/getSettings', function(request, response) {
                         dataSource: 'Local MongoDb',
                         comment: 'Default Comment'
                     }
-                })
-            }
-            else {
+                });
+            } else {
                 response.send({
                     settings: doc
                 });
