@@ -41,15 +41,21 @@ block content
         h1= title
         p Welcome to #{title}
 
-        button.homeMenu.btn.btn-primary Home
-        button.renewablesMenu.btn.btn-info Renewables
-        button.renewablesByIndexMenu.btn.btn-danger Renewables by Index
-        button.renewablesByYearMenu.btn.btn-warning Renewables by Year
-        button.aboutMenu.btn.btn-success About
+        .panel.panel-default
+            .panel-body
+                button.homeMenu.btn.btn-primary Home/Database
+                button.aboutMenu.btn.btn-success About
+            
+        .panel.panel-default
+            .panel-body
+                button.renewablesMenu.btn.btn-info Renewables
+                button.renewablesByIndexMenu.btn.btn-danger Renewables by Index
+                button.renewablesByYearMenu.btn.btn-warning Renewables by Year
 
-        div
-            button.highTechEnergyOverviewMenu.btn.btn-info High Tech Energy Overview
-            button.highTechEnergyTypesMenu.btn.btn-danger High Tech Energy Types
+        .panel.panel-default
+            .panel-body
+                button.highTechEnergyOverviewMenu.btn.btn-info High Tech Energy Overview
+                button.highTechEnergyTypesMenu.btn.btn-danger High Tech Energy Types
 
     #elf-view
 

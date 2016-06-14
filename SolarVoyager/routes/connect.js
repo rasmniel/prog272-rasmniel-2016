@@ -6,17 +6,16 @@ var connect = {
 
     simpleConnect: function() {
         var url = 'mongodb://127.0.0.1:27017/renew';
-        connect.connected = true;
         mongoose.connect(url);
+        connect.connected = true;
         var db = mongoose.connection;
         db.on('error', console.error.bind(console, 'connection error:'));
         db.once('open', function(callback) {
-            connected = true;
-            console.log('Opened connection to mongo');
+            connect.connected = true;
+            console.log('Opened connection to local MongoDb');
         });
     },
 
-    //mongodb://<dbuser>:<dbpassword>@ds011314.mlab.com:11314/prog272-nielsen
     mlabConnect: function() {
         connect.connected = true;
         var userName = 'rasmniel';
@@ -24,21 +23,19 @@ var connect = {
         var siteAndPort = 'ds011314.mlab.com:11314';
         var databaseName = 'prog272-nielsen';
         var url = 'mongodb://' + userName + ':' + password + '@' + siteAndPort + '/' + databaseName;
-        console.log(url);
         mongoose.connect(url);
-
-        // This part is optional
+        connect.connected = true;
         var db = mongoose.connection;
         db.on('error', console.error.bind(console, 'connection error:'));
         db.once('open', function(callback) {
-            connected = true;
-            console.log('Opened connection to mongo');
+            connect.connected = true;
+            console.log('Opened connection to MLab');
         });
     },
 
     doConnection: function(useSimple) {
-        var connectType = useSimple || false; // true for local, false for remote.
-        if (connectType) {
+        //var connectType = useSimple || true;
+        if (false) {
             connect.simpleConnect();
         }
         else {
