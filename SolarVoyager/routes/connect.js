@@ -22,7 +22,7 @@ var connect = {
         var userName = 'rasmniel';
         var password = '1337haxxor';
         var siteAndPort = 'ds011314.mlab.com:11314';
-        var databaseName = 'prog272-nielsen';
+        var databaseName = 'prog219-nielsen';
         var url = 'mongodb://' + userName + ':' + password + '@' + siteAndPort + '/' + databaseName;
         console.log(url);
         mongoose.connect(url);

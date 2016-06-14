@@ -9,9 +9,14 @@ define(function() {
             console.log(renewables.color);
             $('#elf-view').load('/renewables/all-renewables', function() {
                 $('#display').html(renewables.color + ' ' + renewables.size);
-                $('#plusButton').click(renewables.buttonInc);
-                $('#minusButton').click(renewables.buttonDec);
+                $('#plusButton').click({
+                    value: parseInt($('#indexInput').val()) + 1
+                }, indexButtonChange);
+                $('#minusButton').click({
+                    value: parseInt($('#indexInput').val()) - 1
+                }, indexButtonChange);
             });
+            renewables.getRenewable();
         },
         getRenewable: function() {
             $.getJSON('/renewables', function(response) {
@@ -57,23 +62,20 @@ define(function() {
                 wood: renewable['Wood biomass (quadrillion Btu)'],
                 hydropower: renewable['Hydropower (quadrillion Btu)']
             };
-        },
-        buttonInc: function() {
-            var input = $('#indexInput');
-            renewables.index = input.val();
-            if (renewables.index < 11) {
-                input.val(++renewables.index);
-            }
-            renewables.getRenewable();
-        },
-        buttonDec: function() {
-            var input = $('#indexInput');
-            renewables.index = input.val();
-            if (renewables.index > 0) {
-                input.val(--renewables.index);
-            }
-            renewables.getRenewable();
         }
+    };
+
+    function indexChange(test) {
+        if (test < 12 && test >= 0) {
+            renewables.index = test;
+            $('#indexInput').val(test);
+            renewables.showRenewable(renewables.renewablesList[test]);
+        }
+    }
+
+    var indexButtonChange = function(event) {
+        var test = event.data.value + parseInt(renewables.index);
+        indexChange(test);
     };
 
     return renewables;
